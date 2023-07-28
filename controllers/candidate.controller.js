@@ -16,22 +16,27 @@ exports.allCandidates = async (req, res, next) => {
 };
 
 // Add a single candidate
-exports.addCandidate = async (req, res, next) => {
+exports.addCandidate = async (req, res) => {
   try {
-    const candidate = await Candidate.create(req.body);
+    const candidateData = req.body;
+    const newCandidate = await Candidate.create(candidateData);
+    // Save the new candidate to the database
+    const savedCandidate = await newCandidate.save();
     res.status(201).json({
       success: true,
-      candidate,
+      savedCandidate,
     });
   } catch (error) {
-    next(error.message);
+    console.error("Error adding candidate:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
 // update candidate by ID
 exports.updateCandidate = async (req, res, next) => {
   try {
-    const candidate = await Candidate.findById(req.params.id);
+    const candidateId = req.params.candidateId;
+    const candidate = await Candidate.findOne({ _id: candidateId });
 
     if (!candidate) {
       return res.status(404).json({
@@ -40,7 +45,7 @@ exports.updateCandidate = async (req, res, next) => {
       });
     }
     candidate = await Candidate.findByIdAndUpdate(
-      req.params.id,
+      candidateId,
       { $set: req.body },
       { new: true, runValidators: true }
     );
@@ -56,7 +61,8 @@ exports.updateCandidate = async (req, res, next) => {
 // get single candidate by ID
 exports.getSingleCandidate = async (req, res, next) => {
   try {
-    const candidate = await Candidate.findById(req.params.id);
+    const candidateId = req.params.candidateId;
+    const candidate = await Candidate.findOne({ _id: candidateId });
 
     if (!candidate) {
       return res.status(404).json({
@@ -67,7 +73,7 @@ exports.getSingleCandidate = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      candidate,
+      candidateId,
     });
   } catch (error) {
     next(error);
@@ -77,7 +83,8 @@ exports.getSingleCandidate = async (req, res, next) => {
 // delete candidate by id
 exports.deleteCandidate = async (req, res, next) => {
   try {
-    const candidate = await Candidate.findById(req.params.id);
+    const candidateId = req.params.candidateId;
+    const candidate = await Candidate.findOne({ _id: candidateId });
 
     if (!candidate) {
       return res.status(404).json({
@@ -85,14 +92,15 @@ exports.deleteCandidate = async (req, res, next) => {
         message: "candidate not found",
       });
     }
-    candidate = await Candidate.findByIdAndDelete(req.params.id);
+    candidate = await Candidate.findByIdAndDelete(candidateId);
     res.status(200).json({
       success: true,
       candidate,
       message: `${req.params.id} successfully deleted`,
     });
   } catch (error) {
-    next(error);
+    console.error("Error deleting candidate:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -113,9 +121,6 @@ exports.jobCandidates = async (req, res, next) => {
     console.log("candidates", candidate);
 
     // Get an array of candidate IDs from the candidate
-    const candidateIds = candidate.map((app) => app.candidateID);
-
-    const candidates = await Candidate.find({ _id: { $in: candidateIds } });
 
     res.status(200).json({
       success: true,

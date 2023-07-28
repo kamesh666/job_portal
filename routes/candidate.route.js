@@ -10,10 +10,10 @@ const {
 const { isAuthenticated } = require("../middleware/auth");
 
 router.get("/all", isAuthenticated, allCandidates);
-router.put("/update/:id", isAuthenticated, updateCandidate);
+router.put("/update/:candidateId", isAuthenticated, updateCandidate);
 router.post("/add", isAuthenticated, addCandidate);
-router.get("/:id", isAuthenticated, getSingleCandidate);
-router.delete("/:id", isAuthenticated, deleteCandidate);
-router.get("/jobId", jobCandidates);
+router.get("/:candidateId", isAuthenticated, getSingleCandidate);
+router.delete("/:candidateId", isAuthenticated, deleteCandidate);
+router.get("/:jobId", jobCandidates);
 
 module.exports = router;

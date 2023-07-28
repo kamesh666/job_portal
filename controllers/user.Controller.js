@@ -1,6 +1,6 @@
 const User = require("../models/auth.models");
 const ErrorResponse = require("../utils/errorResponse");
-const Job = require("../models/job.model");
+const JobModel = require("../models/job.model");
 
 // get all users
 exports.allUsers = async (req, res, next) => {
@@ -31,15 +31,20 @@ exports.allUsers = async (req, res, next) => {
 
 // view my jobs
 exports.myJobs = async (req, res, next) => {
-  console.log(req.user.id);
-  const myJobs = await Job.find({ user: req.user.id });
+  const adminId = req.params.adminId;
+  const adminJob = await User.findOne({ _id: adminId });
 
-  if (!myJobs) {
-    return next(`job not found with thid ID ${req.user.id}`);
+  if (!adminJob) {
+    return res.status(404).json({
+      message: false,
+      error: "job not found",
+    });
   }
+
+  const jobs = await JobModel.find({ addedBy: adminId });
 
   res.status(200).json({
     success: true,
-    myJobs,
+    jobs,
   });
 };

@@ -3,7 +3,6 @@ const Candidate = require("../models/candidate.model");
 const Questions = require("../models/question.model");
 
 const Schema = mongoose.Schema;
-const { ObjectId } = mongoose.Schema;
 
 const jobSchema = new Schema({
   title: {

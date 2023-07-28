@@ -17,5 +17,5 @@ router.post("/signin", signin);
 router.get("/logout", logout);
 // api/auth/profile
 router.get("/profile", isAuthenticated, UserProfile);
-router.get("/myjob", isAuthenticated, myJobs);
+router.get("/myjob/:adminId", isAuthenticated, myJobs);
 module.exports = router;

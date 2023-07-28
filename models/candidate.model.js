@@ -3,6 +3,16 @@ const jobModel = require("../models/job.model");
 const Schema = mongoose.Schema;
 
 const candidateSchema = new Schema({
+  ID: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  dateOfSubmission: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
   name: {
     type: String,
     required: [true, "Please enter the name"],
@@ -16,18 +26,15 @@ const candidateSchema = new Schema({
   jobId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "Job",
+    required: true,
   },
   answers: {
     type: Map,
     of: String,
   },
-  isShortlisted: {
+  shortlisted: {
     type: Boolean,
     default: false,
-  },
-  dateOfSubmission: {
-    type: Date,
-    default: Date.now,
   },
 });
 
