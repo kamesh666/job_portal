@@ -1,4 +1,4 @@
-const candidateModel = require("../models/candidate.model");
+const Candidate = require("../models/candidate.model");
 const Job = require("../models/job.model");
 const ErrorResponse = require("../utils/errorResponse");
 
@@ -40,7 +40,8 @@ exports.addSingleJob = async (req, res, next) => {
 exports.updateJob = async (req, res, next) => {
   try {
     const jobId = req.params.jobId;
-    const job = await Job.findOne({ _id: jobId });
+    let job = await Job.findOne({ _id: jobId });
+    console.log(job);
 
     if (!job) {
       return res.status(404).json({
@@ -48,12 +49,10 @@ exports.updateJob = async (req, res, next) => {
         message: "job not found",
       });
     }
-    job = await Job.findByIdAndUpdate(
-      req.params.id,
+    job = await Job.findOneAndUpdate(
+      { _id: jobId },
       { $set: req.body },
       { new: true, runValidators: true }
-        .populate("jobType", "jobTypeName")
-        .populate("user", "name")
     );
     res.status(200).json({
       success: true,
@@ -68,7 +67,8 @@ exports.updateJob = async (req, res, next) => {
 exports.getSingleJob = async (req, res, next) => {
   try {
     const jobId = req.params.jobId;
-    const job = await Job.findOne({ _id: jobId });
+    let job = await Job.findOne({ _id: jobId });
+    console.log(job);
 
     if (!job) {
       return res.status(404).json({
@@ -89,7 +89,9 @@ exports.getSingleJob = async (req, res, next) => {
 // delete single job by ID
 exports.deleteJob = async (req, res, next) => {
   try {
-    const job = await Job.findById(req.params.id);
+    const jobId = req.params.jobId;
+    let job = await Job.findOne(jobId);
+    console.log(job);
 
     if (!job) {
       return res.status(404).json({
@@ -97,7 +99,7 @@ exports.deleteJob = async (req, res, next) => {
         message: "job not found",
       });
     }
-    job = await Job.findByIdAndDelete(req.params.id);
+    job = await Job.findOneAndDelete(req.params.id);
     res.status(200).json({
       success: true,
       job,
@@ -112,7 +114,7 @@ exports.candidatesID = async (req, res, next) => {
   try {
     const jobId = req.params.jobId;
 
-    const job = await Job.findOne({ _id: jobId });
+    let job = await Job.findOne({ _id: jobId });
 
     if (!job) {
       return res.status(404).json({
@@ -120,7 +122,7 @@ exports.candidatesID = async (req, res, next) => {
       });
     }
 
-    const candidates = await candidateModel.find({ jobId: jobId });
+    const candidates = await Candidate.find({ jobId: jobId });
 
     // Get an array of candidate IDs from the applications
     const candidateIds = candidates.map((app) => app.candidateID);
@@ -133,7 +135,7 @@ exports.candidatesID = async (req, res, next) => {
       candidate,
     });
   } catch (error) {
-    console.error("Error retrieving candidates:", err);
+    console.error("Error retrieving candidates:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };

@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const Candidate = require("../models/candidate.model");
-const Questions = require("../models/question.model");
 
 const Schema = mongoose.Schema;
 
@@ -22,10 +20,12 @@ const jobSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  questions: {
-    type: mongoose.SchemaType.ObjectId,
-    ref: "Questions",
-  },
+  questions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Questions",
+    },
+  ],
   lastDate: {
     type: Date,
     required: true,
@@ -35,7 +35,7 @@ const jobSchema = new Schema({
     default: 0,
   },
   addedBy: {
-    type: mongoose.SchemaType.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },

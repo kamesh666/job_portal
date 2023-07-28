@@ -2,37 +2,39 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const questionSchema = new Schema({
-  title: {
+  ID: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  questionTitle: {
     type: String,
     required: true,
   },
   subtitle: {
     type: String,
-    required: true,
   },
   isMandatory: {
     type: Boolean,
-    default: false,
+    required: true,
   },
   answerType: {
     type: String,
     enum: ["text", "textarea", "radio", "checkbox", "file"],
     required: true,
   },
-  dropdown: {
+  dropdownOptions: {
     type: [String],
   },
-  maxLength: {
+  max: {
     type: Number,
-    default: 50,
   },
-  minLength: {
+  min: {
     type: Number,
-    default: 20,
   },
   validation: { type: String, required: false },
   jobId: {
-    type: mongoose.SchemaTypes.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Job",
     required: true,
   },

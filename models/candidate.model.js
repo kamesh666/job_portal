@@ -24,7 +24,7 @@ const candidateSchema = new Schema({
     maxlength: 2,
   },
   jobId: {
-    type: mongoose.SchemaTypes.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Job",
     required: true,
   },

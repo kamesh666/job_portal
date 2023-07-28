@@ -19,6 +19,7 @@ exports.allCandidates = async (req, res, next) => {
 exports.addCandidate = async (req, res) => {
   try {
     const candidateData = req.body;
+
     const newCandidate = await Candidate.create(candidateData);
     // Save the new candidate to the database
     const savedCandidate = await newCandidate.save();
@@ -27,7 +28,7 @@ exports.addCandidate = async (req, res) => {
       savedCandidate,
     });
   } catch (error) {
-    console.error("Error adding candidate:", err);
+    console.error("Error adding candidate:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -36,7 +37,7 @@ exports.addCandidate = async (req, res) => {
 exports.updateCandidate = async (req, res, next) => {
   try {
     const candidateId = req.params.candidateId;
-    const candidate = await Candidate.findOne({ _id: candidateId });
+    let candidate = await Candidate.findOne({ _id: candidateId });
 
     if (!candidate) {
       return res.status(404).json({
@@ -44,8 +45,8 @@ exports.updateCandidate = async (req, res, next) => {
         message: "candidate not found",
       });
     }
-    candidate = await Candidate.findByIdAndUpdate(
-      candidateId,
+    candidate = await Candidate.findOneAndUpdate(
+      { _id: candidateId },
       { $set: req.body },
       { new: true, runValidators: true }
     );
@@ -62,7 +63,7 @@ exports.updateCandidate = async (req, res, next) => {
 exports.getSingleCandidate = async (req, res, next) => {
   try {
     const candidateId = req.params.candidateId;
-    const candidate = await Candidate.findOne({ _id: candidateId });
+    let candidate = await Candidate.findOne({ _id: candidateId });
 
     if (!candidate) {
       return res.status(404).json({
@@ -73,7 +74,7 @@ exports.getSingleCandidate = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      candidateId,
+      candidate,
     });
   } catch (error) {
     next(error);
@@ -110,7 +111,7 @@ exports.jobCandidates = async (req, res, next) => {
     const jobId = req.params.jobId;
 
     // find the job with the given jobID
-    const job = await Job.findOne({ _id: jobId });
+    let job = await Job.findOne({ _id: jobId });
     if (!job) {
       return res.status(404).json({
         error: "job not found",
@@ -124,7 +125,7 @@ exports.jobCandidates = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      candidates,
+      candidate,
     });
   } catch (err) {
     console.error("Error retrieving candidates:", err);
