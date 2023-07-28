@@ -1,0 +1,102 @@
+[
+    {
+        "title": "Eidel",
+        "description": "05642 Cardinal Alley",
+        "isActive": true
+    },
+    {
+        "title": "Avaveo",
+        "description": "814 Vidon Street",
+        "isActive": true
+    },
+    {
+        "title": "Jazzy",
+        "description": "55 Bobwhite Junction",
+        "isActive": false
+    },
+    {
+        "title": "Gabtune",
+        "description": "46 Walton Junction",
+        "isActive": true
+    },
+    {
+        "title": "Zoomlounge",
+        "description": "129 Fisk Avenue",
+        "isActive": true
+    },
+    {
+        "title": "Talane",
+        "description": "5645 Hooker Avenue",
+        "isActive": false
+    },
+    {
+        "title": "Blogpad",
+        "description": "6520 Farwell Parkway",
+        "isActive": true
+    },
+    {
+        "title": "Eamia",
+        "description": "0155 Beilfuss Terrace",
+        "isActive": false
+    },
+    {
+        "title": "Gabtune",
+        "description": "76 Oxford Crossing",
+        "isActive": false
+    },
+    {
+        "title": "Flashset",
+        "description": "9408 Bowman Trail",
+        "isActive": true
+    },
+    {
+        "title": "Avamba",
+        "description": "6747 Shopko Lane",
+        "isActive": false
+    },
+    {
+        "title": "Voomm",
+        "description": "8941 Eastlawn Street",
+        "isActive": true
+    },
+    {
+        "title": "Katz",
+        "description": "7082 Stephen Lane",
+        "isActive": true
+    },
+    {
+        "title": "Kazio",
+        "description": "66853 Anthes Hill",
+        "isActive": false
+    },
+    {
+        "title": "Twitternation",
+        "description": "7650 Straubel Avenue",
+        "isActive": false
+    },
+    {
+        "title": "Rhynoodle",
+        "description": "75 Clove Avenue",
+        "isActive": false
+    },
+    {
+        "title": "Devpoint",
+        "description": "41 Bluejay Parkway",
+        "isActive": false
+    },
+    {
+        "title": "Fadeo",
+        "description": "8522 Arrowood Street",
+        "isActive": true
+    },
+    {
+        "title": "Meevee",
+        "description": "7 Boyd Center",
+        "isActive": false
+    },
+    {
+        "title": "Wikizz",
+        "description": "40015 Esch Junction",
+        "isActive": false
+    }
+]
