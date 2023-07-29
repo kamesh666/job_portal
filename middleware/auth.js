@@ -8,7 +8,7 @@ exports.isAuthenticated = async (req, res, next) => {
   const { token } = req.cookies;
   // Make sure token exists
   if (!token) {
-    return next(new ErrorResponse("Not authorized to access this route", 401));
+    return next(new ErrorResponse("Please login to use this route", 401));
   }
 
   try {
@@ -17,7 +17,7 @@ exports.isAuthenticated = async (req, res, next) => {
     req.user = await User.findById(decoded.id);
     next();
   } catch (error) {
-    return next(new ErrorResponse("Not authorized to access this route", 401));
+    return next(new ErrorResponse("Please login to use this route", 401));
   }
 };
 
