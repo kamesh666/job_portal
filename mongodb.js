@@ -14,6 +14,11 @@ function mongoDB() {
     .catch((err) => {
       console.error(`mongodb error : ${err}`);
     });
+
+  mongoose.connection.on("unhandledRejection", (reason, promise) => {
+    console.error("Unhandled Rejection at:", promise, "reason:", reason);
+    // You can add any custom error handling or logging here.
+  });
 }
 
 module.exports = { mongoDB };
