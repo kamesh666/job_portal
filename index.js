@@ -40,6 +40,8 @@ app.use("/question", questionRoutes);
 app.use(errorHandler);
 
 const port = process.env.PORT || 3001;
+
+app.get("/");
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
