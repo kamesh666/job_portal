@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 function mongoDB() {
-  const mongouri = process.env.MONGO_URI;
+  const mongouri =
+    "mongodb+srv://kamesh:kamesh@cluster0.xelm3mq.mongodb.net/?retryWrites=true&w=majority";
   mongoose
     .connect(mongouri, {
       useNewUrlParser: true,
