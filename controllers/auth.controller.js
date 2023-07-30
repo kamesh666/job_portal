@@ -32,7 +32,7 @@ exports.signin = async (req, res, next) => {
     }
 
     // check user email
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("-password");
     if (!user) {
       return next(new ErrorResponse("invalid credentials", 400));
     }
