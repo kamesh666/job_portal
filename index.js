@@ -41,7 +41,9 @@ app.use(errorHandler);
 
 const port = process.env.PORT || 3001;
 
-app.get("/");
+app.get("/", (req, res) => {
+  res.send("This is job portal backend application server");
+});
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
