@@ -23,6 +23,21 @@ This is a comprehensive web-based job portal designed specifically for HR execut
 - API: RESTAPI
 - Authentication: JSON Web Tokens (JWT)
 
+## Requirement Packages
+
+- bcryptjs
+- body-parser
+- cookie-parser
+- cors
+- dotenv
+- express
+- jest
+- jsonwebtoken
+- moment
+- mongoose
+- morgan
+- nodemon
+
 ## How to Contribute
 
 We welcome contributions to improve the job portal and add new features. If you'd like to contribute, follow these steps:
@@ -124,3 +139,24 @@ Below are the API endpoints to handle questions in the HR Executive Job Portal:
 - **POST /api/questions/:jobId**: Add a new question to a job.
 - **PUT /api/questions/:questionId**: Update a single question.
 - **DELETE /api/questions/:questionId**: Delete a single question.
+
+## Job API Endpoint
+
+Below are the API endpoints to handle admin-related actions in the HR Executive Job Portal:
+
+- **GET /api/jobs/all**: get all jobs
+- **POST /api/jobs/add**: Adding a single job
+- **PUT /api/jobs/:jobId**: updating a job by Id
+- **GET /api/jobs/jobId**: get single job by Id
+- **GET /api/jobs/candidate/:jobId**: get all candidates given job ID
+- **DELETE /api/jobs/:jobId**: delete single job by ID
+
+## Candidates API Endpoint
+
+Below are the API endpoints to handle admin-related actions in the HR Executive Job Portal:
+
+- **GET /api/candidate/all**: get all candidates
+- **POST /api/candidate/add**: add a Single Candidate
+- **PUT /api/candidate/update/:candidateId**: update candidate by ID
+- **GET /api/candidate/:candidateId**: get single candidate by ID
+- **DELETE /api/candidate/:candidateId**: delete candidate by ID
