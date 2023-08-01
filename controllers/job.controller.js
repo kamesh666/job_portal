@@ -22,20 +22,6 @@ exports.getAllJobs = async (req, res, next) => {
   }
 };
 
-// Add a single job
-exports.addSingleJob = async (req, res, next) => {
-  try {
-    const job = await Job.create(req.body);
-    const saveJob = await job.save();
-    res.status(201).json({
-      success: true,
-      saveJob,
-    });
-  } catch (error) {
-    next(error.message);
-  }
-};
-
 // update job by ID
 exports.updateJob = async (req, res, next) => {
   try {

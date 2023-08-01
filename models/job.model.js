@@ -3,13 +3,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    auto: true,
   },
   dateOfCreation: {
     type: Date,
@@ -18,12 +14,32 @@ const jobSchema = new Schema({
   },
   isActive: {
     type: Boolean,
-    default: false,
+    required: true,
+    default: true,
   },
   questions: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Questions",
+      questionTitle: {
+        type: String,
+        required: true,
+      },
+      subtitle: String,
+      answerType: {
+        type: String,
+        required: true,
+      },
+      isMandatory: {
+        type: Boolean,
+        required: true,
+      },
+      dropdownOptions: [String],
+      max: Number,
+      min: Number,
+      validation: String,
+      questionId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Questions",
+      },
     },
   ],
   lastDate: {
@@ -32,11 +48,12 @@ const jobSchema = new Schema({
   },
   totalCandidates: {
     type: Number,
+    required: true,
     default: 0,
   },
   addedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Admin",
     required: true,
   },
 });

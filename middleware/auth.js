@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/auth.models");
+const Admin = require("../models/admin.models");
 const ErrorResponse = require("../utils/errorResponse");
 
 // check is user authenticated
@@ -8,13 +8,14 @@ exports.isAuthenticated = async (req, res, next) => {
   const { token } = req.cookies;
   // Make sure token exists
   if (!token) {
-    return next(new ErrorResponse("Please login to use this route", 401));
+    return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    req.user = await User.findById(decoded.id);
+    // req.adminId = await Admin.findById(decoded._id);
+    req.adminId = decoded.id;
     next();
   } catch (error) {
     return next(new ErrorResponse("Please login to use this route", 401));

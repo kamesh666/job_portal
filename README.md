@@ -20,6 +20,7 @@ This is a comprehensive web-based job portal designed specifically for HR execut
 
 - Back-end: Node.js, Express.js
 - Database: MongoDB
+- API: RESTAPI
 - Authentication: JSON Web Tokens (JWT)
 
 ## How to Contribute
@@ -102,3 +103,24 @@ Open your web browser and go to [http://localhost:3000](http://localhost:3000) t
 ## Description
 
 This database design represents the schema for an HR Executive Job Portal. The portal allows HR executives to create and manage job listings, add custom questions to jobs, view candidate applications, and more.
+
+## API ENDPOINTS
+
+## Admin API Endpoint
+
+Below are the API endpoints to handle admin-related actions in the HR Executive Job Portal:
+
+- **POST /api/admin/signin**: Sign in an admin with credentials.
+- **GET /api/admin/jobs**: Get all jobs created by the admin.
+- **POST /api/admin/jobs**: Add a new job listing.
+- **PUT /api/admin/jobs/:jobId**: Update an existing job listing.
+- **DELETE /api/admin/jobs/:jobId**: Delete a job listing.
+## Question API Endpoint
+
+Below are the API endpoints to handle questions in the HR Executive Job Portal:
+
+- **GET /api/questions/:jobId**: Get all questions for a specific job.
+- **GET /api/questions/jobId/:jobId**: Get all candidates given jobID.
+- **POST /api/questions/:jobId**: Add a new question to a job.
+- **PUT /api/questions/:questionId**: Update a single question.
+- **DELETE /api/questions/:questionId**: Delete a single question.

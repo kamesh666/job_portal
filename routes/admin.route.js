@@ -5,8 +5,11 @@ const {
   signin,
   logout,
   UserProfile,
-} = require("../controllers/auth.controller");
-const { myJobs } = require("../controllers/user.Controller");
+  getAllJobsByAdmin,
+  addNewJob,
+  updateExistingJobById,
+  deleteJobById,
+} = require("../controllers/admin.controller");
 
 // auth routes
 // api/auth/signup
@@ -17,5 +20,9 @@ router.post("/signin", signin);
 router.get("/logout", logout);
 // api/auth/profile
 router.get("/profile", isAuthenticated, UserProfile);
-router.get("/myjob/:adminId", isAuthenticated, myJobs);
+// api/admin/jobs
+router.post("/jobs/new", isAuthenticated, addNewJob);
+router.get("/jobs", isAuthenticated, getAllJobsByAdmin);
+router.put("/jobs/:jobId", isAuthenticated, updateExistingJobById);
+router.delete("/jobs/:jobId", isAuthenticated, deleteJobById);
 module.exports = router;

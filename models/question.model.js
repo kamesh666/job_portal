@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const questionSchema = new Schema({
-  ID: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   questionTitle: {
     type: String,
     required: true,
@@ -26,17 +21,13 @@ const questionSchema = new Schema({
   dropdownOptions: {
     type: [String],
   },
-  max: {
-    type: Number,
-  },
-  min: {
-    type: Number,
-  },
+  max: Number,
+  min: Number,
   validation: { type: String, required: false },
   jobId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Job",
-    required: true,
+    auto: true,
   },
 });
 
