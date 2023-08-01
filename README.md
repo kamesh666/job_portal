@@ -49,17 +49,21 @@ We welcome contributions to improve the job portal and add new features. If you'
 
 ## Installation and Setup
  **Clone the repository:**
- git clone https://github.com/kamesh666/job_portal.git
+ git clone [Github](https://github.com/kamesh666/job_portal.git)
 cd job_portal
 
 **Install dependencies:**
+```bash
 npm install
+```
 
  **Set up environment variables (if required):**
 If the project requires environment variables, create a `.env` file in the root directory and add the necessary variables. You can find the required variables in the `.env.example` file.
 
  **Start the application:**
- npm start
+```bash
+npm start
+```
 
  **View the application:**
 Open your web browser and go to [http://localhost:3000](http://localhost:3000) to view the application.
