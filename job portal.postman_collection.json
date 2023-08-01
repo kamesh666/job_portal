@@ -1,0 +1,533 @@
+{
+	"info": {
+		"_postman_id": "ef3df00e-a090-407b-b903-9fa8aab83372",
+		"name": "job portal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14836914"
+	},
+	"item": [
+		{
+			"name": "Candidate",
+			"item": [
+				{
+					"name": "allcandidates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api//candidates/all",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"",
+								"candidates",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addCandidate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\":\"03\",\r\n    \"dateOfSubmission\":\"2023-07-29\",\r\n    \"name\":\"KameshS\",\r\n    \"age\":25,\r\n    \"jobId\":\"64c3e087de16fcc7dc73e826\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/candidate/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"candidate",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCandidate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jobId\":\"64c53ec0f2dcc7f7de4b7e1c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/candidate/update/64c53e8b9a176ae45b7a58f4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"candidate",
+								"update",
+								"64c53e8b9a176ae45b7a58f4"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "64c2a9429a5af8cbc5b10aa9",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/candidate/64c2a9429a5af8cbc5b10aa9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"candidate",
+								"64c2a9429a5af8cbc5b10aa9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSingleCandidate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/candidate/64c53e8b9a176ae45b7a58f4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"candidate",
+								"64c53e8b9a176ae45b7a58f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all candidates given job id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admin/jobs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "jobs",
+			"item": [
+				{
+					"name": "addNewJobByAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dateOfCreation\":\"2022-03-03\",\r\n    \"isActive\":true,\r\n    \"questions\":[{\r\n        \"questionTitle\":\"how many years experience in nodejs development\",\r\n        \"subtitle\":\"development area\",\r\n        \"answerType\":\"text\",\r\n        \"isMandatory\":false,\r\n        \"max\":5,\r\n        \"min\":3\r\n    }],\r\n    \"lastDate\":\"2023-06-06\",\r\n    \"totalCandidates\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admin/jobs/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"jobs",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/job/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"job",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateExistingJobById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dateOfCreation\":\"2022-04-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admin/jobs/64c8974960a6ccf68321a6be",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"jobs",
+								"64c8974960a6ccf68321a6be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single job",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/job/64c3e087de16fcc7dc73e826",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"job",
+								"64c3e087de16fcc7dc73e826"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteJobById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admin/jobs/64c8974960a6ccf68321a6be",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"jobs",
+								"64c8974960a6ccf68321a6be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "candidate job",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/job/candidate/64c3e087de16fcc7dc73e826",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"job",
+								"candidate",
+								"64c3e087de16fcc7dc73e826"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kameshs\",\r\n    \"email\":\"kameshs@gmail.com\",\r\n    \"password\":\"kamesh@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admin/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"kameshs1@gmail.com\",\r\n    \"password\":\"kameshs@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admin/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myJobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/myjob/64c3d759e6243eecbf762ccb",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"myjob",
+								"64c3d759e6243eecbf762ccb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quesitons",
+			"item": [
+				{
+					"name": "add a single question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\":\"01\",\r\n    \"questionTitle\":\"how many experience in javascript development\",\r\n    \"subtitle\":\"javascript development\",\r\n    \"isMandatory\":true,\r\n    \"answer\":\"3 yrs\",\r\n    \"answerType\":\"text\",\r\n    \"dropdownOptions\":\"3yrs\",\r\n    \"max\":5,\r\n    \"min\":2,\r\n    \"validation\":\"yes\",\r\n    \"jobId\":\"64c3e087de16fcc7dc73e826\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/question/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"question",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all question given jobId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/question/64c342bcebaaa1b0f5ab4278",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"question",
+								"64c342bcebaaa1b0f5ab4278"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete question",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/question/64c342bcebaaa1b0f5ab4278/64c39beb7bbd433243c47e35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"question",
+								"64c342bcebaaa1b0f5ab4278",
+								"64c39beb7bbd433243c47e35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update question",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"questionTitle\": \"how many experience in nodejs development\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/question/update/64c3ed1526fd9eefdd719e7d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"question",
+								"update",
+								"64c3ed1526fd9eefdd719e7d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all candidates given job ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/question/jobId/64c3e087de16fcc7dc73e826",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"question",
+								"jobId",
+								"64c3e087de16fcc7dc73e826"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

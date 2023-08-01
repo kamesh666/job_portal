@@ -160,3 +160,7 @@ Below are the API endpoints to handle admin-related actions in the HR Executive 
 - **PUT /api/candidate/update/:candidateId**: update candidate by ID
 - **GET /api/candidate/:candidateId**: get single candidate by ID
 - **DELETE /api/candidate/:candidateId**: delete candidate by ID
+
+#### POSTMAN COLLECTION
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/14836914-ef3df00e-a090-407b-b903-9fa8aab83372?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D14836914-ef3df00e-a090-407b-b903-9fa8aab83372%26entityType%3Dcollection%26workspaceId%3De973ebe0-ab83-476a-a47d-94ab29df3c07)
