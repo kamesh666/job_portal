@@ -66,7 +66,7 @@ npm start
 ```
 
  **View the application:**
-Open your web browser and go to [http://localhost:3000](http://localhost:3000) to view the application.
+Open your web browser and go to [Run](http://localhost:3000) to view the application.
 
 # HR Executive Job Portal Database Design
 
